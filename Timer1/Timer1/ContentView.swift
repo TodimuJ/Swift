@@ -20,7 +20,13 @@ struct ContentView: View {
         ZStack{
             Color.gray.opacity(0.3)
             .ignoresSafeArea(.all) // Ignore just for the color
-
+            
+            GeometryReader { geometry in
+        Text("Countdown Timer")
+            .position(x: geometry.size.width/2 , y: 40)
+            .font(.system(size:40))
+                
+            }
         
         VStack(spacing : 40){
             
