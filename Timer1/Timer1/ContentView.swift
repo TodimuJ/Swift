@@ -56,8 +56,8 @@ struct ContentView: View {
                     })
                 
                 
-                Label("Resume", systemImage: "backward.fill")
-                    .frame(width:200, height: 50)
+                Label("Reset", systemImage: "backward.fill")
+                    .frame(width:150, height: 50)
                     .background(Color.white)
                     .cornerRadius(9)
                     .foregroundColor(.black)
