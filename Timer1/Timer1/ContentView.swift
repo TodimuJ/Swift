@@ -24,7 +24,7 @@ struct ContentView: View {
             GeometryReader { geometry in
         Text("Countdown Timer")
             .position(x: geometry.size.width/2 , y: 40)
-            .font(.system(size:40))
+            .font(.system(size:40, weight: .medium))
                 
             }
         
