@@ -59,6 +59,13 @@ struct Home : View {
                 HStack(spacing: 20) {
                  
                     Button(action: {
+                        if self.count == 30 {
+                            self.count = 0
+                            withAnimation(.default){
+                                self.to = 0
+                            }
+                        }
+                        self.start.toggle()
                         
                     }) {
                         HStack(spacing: 15){
@@ -77,7 +84,10 @@ struct Home : View {
                     
                     
                     Button(action: {
-                        
+                        self.count = 0
+                        withAnimation(.default){
+                            self.to = 0
+                        }
                     }) {
                         HStack(spacing: 15){
                             Image(systemName: "arrow.clockwise")
@@ -103,7 +113,26 @@ struct Home : View {
 
         }
         .onReceive(self.time) { (_) in
-            print("hello")
+            
+            if self.start {
+                if self.count != 15 {
+                    self.count += 1
+                    print("hello")
+                    
+                    withAnimation(.default){
+                        self.to = CGFloat(self.count)/15
+                    }
+                }
+                
+                else {
+                    
+                    withAnimation(.default) {
+                        self.to = 0
+                    }
+                    self.start.toggle()
+                }
+
+            }
         }
     }
 }
