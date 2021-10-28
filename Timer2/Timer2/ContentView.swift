@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ContentView: View {
     var body: some View {
@@ -40,7 +41,7 @@ struct Home : View {
                     
                     Circle()
                         .trim(from: 0, to: self.to )
-                        .stroke(Color.red, style: StrokeStyle(lineWidth: 35, lineCap: .round))
+                        .stroke(self.count > 10 ? Color.red : Color.green, style: StrokeStyle(lineWidth: 35, lineCap: .round))
                         .frame(width: 280, height: 280)
                         .rotationEffect(.init(degrees: -90))
                     
@@ -59,7 +60,7 @@ struct Home : View {
                 HStack(spacing: 20) {
                  
                     Button(action: {
-                        if self.count == 30 {
+                        if self.count == 15 {
                             self.count = 0
                             withAnimation(.default){
                                 self.to = 0
@@ -125,14 +126,29 @@ struct Home : View {
                 }
                 
                 else {
-                    
-                    withAnimation(.default) {
-                        self.to = 0
-                    }
                     self.start.toggle()
+                    self.Notify()
                 }
 
             }
         }
+        .onAppear(perform: {
+            UNUserNotificationCenter.current().requestAuthorization(options:
+               [.badge, .sound, .alert]) {(_, _) in
+            }
+        })
     }
+    
+    func Notify() {
+        let content = UNMutableNotificationContent()
+        content.title =  "Message"
+        content.body = "Timer is Completed Successfully in Background!!"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        
+        let req = UNNotificationRequest(identifier: "MSG", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
+    }
+    
 }
