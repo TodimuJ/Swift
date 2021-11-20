@@ -36,7 +36,7 @@ struct ContentView: View {
                 
                 Color(isClicked ? .yellow : .white)
                     .frame(width: 100, height: 100, alignment: .center)
-                    .rotation3DEffect(isClicked ? .degrees(180) : .degrees(0), axis: <#T##(x: CGFloat, y: CGFloat, z: CGFloat)#>)
+                    .rotation3DEffect(isClicked ? .degrees(180) : .degrees(0), axis: (x: 1.0, y: 1.0, z: 1.0))
 //                    .rotationEffect(isClicked ? .degrees(90) : .degrees(0))
                     .offset(x: 0, y: isClicked ? -100 : 100)
                     .animation(.spring())
