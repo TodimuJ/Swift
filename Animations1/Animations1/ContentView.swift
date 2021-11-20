@@ -39,7 +39,8 @@ struct ContentView: View {
                     .rotation3DEffect(isClicked ? .degrees(360) : .degrees(0), axis: (x: 1.0, y: 1.0, z: 1.0))
 //                    .rotationEffect(isClicked ? .degrees(90) : .degrees(0))
                     .offset(x: 0, y: isClicked ? -100 : 100)
-                    .animation(.spring())
+//                    .animation(.spring())
+                    .animation(.linear(duration: 1.0))
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
 
