@@ -34,10 +34,10 @@ struct ContentView: View {
                     .animation(.spring())
                     .offset(x: 0, y: isClicked ? (geometry.size.height)/2 - 350 : (geometry.size.height)/2 - 100)
                 
-                Color.white
+                Color(isClicked ? .yellow : .white)
                     .frame(width: 100, height: 100, alignment: .center)
                     .rotationEffect(isClicked ? .degrees(90) : .degrees(0))
-                    .offset(x: 0, y: isClicked ? -100 : 0)
+                    .offset(x: 0, y: isClicked ? -100 : 100)
                     .animation(.spring())
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
