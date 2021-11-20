@@ -29,14 +29,14 @@ struct ContentView: View {
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(.red)
                         .frame(width: 60, height: 60, alignment: .center)
-                        .rotationEffect(isClicked ? .degrees(90) : .degrees(0))
-                        .animation(.interactiveSpring())
-                    
                 })
+                    .rotationEffect(isClicked ? .degrees(90) : .degrees(0))
+                    .animation(.easeIn)
+                    .offset(x: 0, y: isClicked ? (geometry.size.height)/2 - 200 : (geometry.size.height)/2 - 100)
                 
-                Color.blue
+                Color.white
                     .frame(width: 100, height: 100, alignment: .center)
-                    .offset(x: 0, y: isClicked ? (geometry.size.height)/2 - 100 : (geometry.size.height)/2 + 100)
+                    .offset(x: 0, y: isClicked ? -100 : 0)
                     .animation(.easeInOut)
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
