@@ -12,11 +12,27 @@ struct ContentView: View {
     @State private var isClicked : Bool = false
     
     var body: some View {
-        Button(action: {}, label: {
-            Image(systemName: "plus.circle.fill")
-                .resizable()
-                .frame(width: 60, height: 60, alignment: .center)
-        })
+        
+        GeometryReader{
+            geometry in
+            
+            ZStack{
+                Button(action: self.animation , label: {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 60, height: 60, alignment: .center)
+                        .rotationEffect(isClicked ? .degrees(90) : .degrees(0))
+                        .animation(.spring())
+                    
+                })
+                
+                Color.black
+                    .frame(width: 100, height: 100, alignment: .center)
+                    .offset(x: <#T##CGFloat#>, y: <#T##CGFloat#>)
+            }
+
+            
+        }
     }
     
     
