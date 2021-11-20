@@ -26,12 +26,14 @@ struct ContentView: View {
                     
                 })
                 
-                Color.black
+                Color
+                    .black
                     .frame(width: 100, height: 100, alignment: .center)
-                    .offset(x: <#T##CGFloat#>, y: <#T##CGFloat#>)
+                    .offset(x: 0, y: (geometry.size.height)/2 + 100)
             }
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
 
-            
+
         }
     }
     
