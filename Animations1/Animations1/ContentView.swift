@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isClicked : Bool = false
+    
     var body: some View {
         Button(action: {}, label: {
-            Text("Hello")
+            Image(systemName: "plus.circle.fill")
+                .resizable()
+                .frame(width: 60, height: 60, alignment: .center)
         })
+    }
+    
+    
+    func animation() {
+        self.isClicked.toggle()
     }
 }
 
