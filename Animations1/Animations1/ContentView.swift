@@ -18,7 +18,7 @@ struct ContentView: View {
             ZStack{
                 
                 LinearGradient(gradient: Gradient(colors: [Color.green, Color.blue, Color.white, Color.red]), startPoint: .leading, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.vertical)
+                    .edgesIgnoringSafeArea(.all)
                 Color.gray
                     .opacity(0.1)
                     .edgesIgnoringSafeArea(.all)
@@ -26,10 +26,11 @@ struct ContentView: View {
                 Button(action: self.animation , label: {
                     Image(systemName: isClicked ? "gobackward" : "plus.circle.fill")
                         .resizable()
+                        .aspectRatio(contentMode: .fit)
                         .foregroundColor(.red)
                         .frame(width: 60, height: 60, alignment: .center)
                         .rotationEffect(isClicked ? .degrees(90) : .degrees(0))
-                        .animation(.spring())
+                        .animation(.interactiveSpring())
                     
                 })
                 
