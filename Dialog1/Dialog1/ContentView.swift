@@ -12,10 +12,20 @@ struct ContentView: View {
     @State private var isShowingAlert = false
     
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button {
+            isShowingAlert = true
+        } label: {
+            Label("Delete", systemImage: "trash.fill")
+        }
+        .buttonStyle(.bordered)
+        .tint(.pink)
+        .controlSize(.large)
+        .alert("Are you sure?", isPresented : $isShowingAlert){
+            Button("Delete", role: .destructive){
+                print("Item Deleted")
+            }
+        }
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
