@@ -10,38 +10,61 @@ import SwiftUI
 
 struct CardView: View {
     
+    @State var isSelected : Bool = false
+    
     var body: some View {
         VStack(alignment: .leading){
             HStack {
                 Spacer()
-                Image("") //logo
+                Image("visaIcon") //logo
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 30, height: 25)
+                    .foregroundColor(isSelected ? .white : .black)
+//                    .background(Color.white)
+//                    .cornerRadius(5)
+                    .padding(.top)
             }
+            Spacer()
+            Spacer()
             Spacer()
             Text("Balance")
                 .font(.caption)
-            HStack {
+                .foregroundColor(isSelected ? .white : .black)
+//                .padding(.top)
+            HStack(alignment: .center){
                 Text("USD")
+                    .foregroundColor(isSelected ? .white : .black)
                     .font(.caption)
-                    .fontWeight(.bold)
                 Text("$23,456.97")
-                    .font(.headline)
+                    .foregroundColor(isSelected ? .white : .black)
+                    .font(Font.headline.bold())
             }
-            Spacer()
+            .padding(.bottom)
+//            Spacer()
             Text("**** **** **** 2061 ")
                 .font(.caption)
-            Spacer()
+                .padding()
+                .foregroundColor(isSelected ? .white : .black)
+//            Spacer()
         }
-        .padding(8)
-        .background(Color.blue)
-        .cornerRadius(20)
         .frame(width: 145, height: 145)
-        
+        .padding(8)
+        .background(isSelected ? Color("cardColor") : .white)
+        .cornerRadius(20)
     }
 }
 
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView()
+        Group{
+        CardView(isSelected: true)
+                .previewLayout(.sizeThatFits)
+        
+        CardView(isSelected: false)
+                .previewLayout(.sizeThatFits)
+        }
     }
 }
+

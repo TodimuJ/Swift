@@ -9,8 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ScrollView{
+            LazyHStack {
+                ForEach(0..<10, id: \.self) { item in
+                    CardView(isSelected: item == 0)
+                        .shadow(color: .gray, radius: 10)
+                }
+            }
+        }
     }
 }
 
