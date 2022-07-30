@@ -18,12 +18,13 @@ struct CardView: View {
                 Spacer()
                 Image("visaIcon") //logo
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: 30, height: 25)
                     .foregroundColor(isSelected ? .white : .black)
 //                    .background(Color.white)
 //                    .cornerRadius(5)
                     .padding(.top)
+                    .padding(.horizontal)
             }
             Spacer()
             Spacer()
@@ -31,7 +32,7 @@ struct CardView: View {
             Text("Balance")
                 .font(.caption)
                 .foregroundColor(isSelected ? .white : .black)
-//                .padding(.top)
+                .padding(.bottom)
             HStack(alignment: .center){
                 Text("USD")
                     .foregroundColor(isSelected ? .white : .black)
@@ -41,14 +42,14 @@ struct CardView: View {
                     .font(Font.headline.bold())
             }
             .padding(.bottom)
-//            Spacer()
+            Spacer()
             Text("**** **** **** 2061 ")
                 .font(.caption)
-                .padding()
+                .padding(.bottom)
                 .foregroundColor(isSelected ? .white : .black)
 //            Spacer()
         }
-        .frame(width: 145, height: 145)
+        .frame(width: 138, height: 165)
         .padding(8)
         .background(isSelected ? Color("cardColor") : .white)
         .cornerRadius(20)
