@@ -13,6 +13,14 @@
 		32C160AF2895958700C855FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C160AE2895958700C855FD /* Preview Assets.xcassets */; };
 		32C160B62895978700C855FD /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160B52895978700C855FD /* CardView.swift */; };
 		32C160B92895C5B400C855FD /* CardTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160B82895C5B400C855FD /* CardTransactionView.swift */; };
+		32C160BB2895DF3900C855FD /* SelectedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160BA2895DF3900C855FD /* SelectedCard.swift */; };
+		32C160BD2895E03000C855FD /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160BC2895E03000C855FD /* Trend.swift */; };
+		32C160BF2895E04300C855FD /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160BE2895E04300C855FD /* Wallet.swift */; };
+		32C160C12895E05200C855FD /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160C02895E05200C855FD /* Profile.swift */; };
+		32C160C42895E13500C855FD /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160C32895E13500C855FD /* Transactions.swift */; };
+		32C160C62895E22600C855FD /* TransactionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160C52895E22600C855FD /* TransactionRow.swift */; };
+		32C160C82895EAE900C855FD /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160C72895EAE900C855FD /* CardType.swift */; };
+		32C160CA2895EC0000C855FD /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C160C92895EC0000C855FD /* CardList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +31,14 @@
 		32C160AE2895958700C855FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		32C160B52895978700C855FD /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		32C160B82895C5B400C855FD /* CardTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransactionView.swift; sourceTree = "<group>"; };
+		32C160BA2895DF3900C855FD /* SelectedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCard.swift; sourceTree = "<group>"; };
+		32C160BC2895E03000C855FD /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
+		32C160BE2895E04300C855FD /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		32C160C02895E05200C855FD /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		32C160C32895E13500C855FD /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
+		32C160C52895E22600C855FD /* TransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRow.swift; sourceTree = "<group>"; };
+		32C160C72895EAE900C855FD /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		32C160C92895EC0000C855FD /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +71,7 @@
 		32C160A62895958600C855FD /* Wallet1 */ = {
 			isa = PBXGroup;
 			children = (
+				32C160C22895E12300C855FD /* Models */,
 				32C160B72895979600C855FD /* Views */,
 				32C160A72895958600C855FD /* Wallet1App.swift */,
 				32C160AB2895958700C855FD /* Assets.xcassets */,
@@ -77,8 +94,23 @@
 				32C160B52895978700C855FD /* CardView.swift */,
 				32C160A92895958600C855FD /* ContentView.swift */,
 				32C160B82895C5B400C855FD /* CardTransactionView.swift */,
+				32C160BA2895DF3900C855FD /* SelectedCard.swift */,
+				32C160BC2895E03000C855FD /* Trend.swift */,
+				32C160BE2895E04300C855FD /* Wallet.swift */,
+				32C160C02895E05200C855FD /* Profile.swift */,
+				32C160C52895E22600C855FD /* TransactionRow.swift */,
+				32C160C92895EC0000C855FD /* CardList.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		32C160C22895E12300C855FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32C160C32895E13500C855FD /* Transactions.swift */,
+				32C160C72895EAE900C855FD /* CardType.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,9 +184,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				32C160AA2895958600C855FD /* ContentView.swift in Sources */,
+				32C160C12895E05200C855FD /* Profile.swift in Sources */,
+				32C160BF2895E04300C855FD /* Wallet.swift in Sources */,
 				32C160B62895978700C855FD /* CardView.swift in Sources */,
 				32C160A82895958600C855FD /* Wallet1App.swift in Sources */,
+				32C160C62895E22600C855FD /* TransactionRow.swift in Sources */,
+				32C160BB2895DF3900C855FD /* SelectedCard.swift in Sources */,
+				32C160CA2895EC0000C855FD /* CardList.swift in Sources */,
+				32C160C42895E13500C855FD /* Transactions.swift in Sources */,
 				32C160B92895C5B400C855FD /* CardTransactionView.swift in Sources */,
+				32C160C82895EAE900C855FD /* CardType.swift in Sources */,
+				32C160BD2895E03000C855FD /* Trend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

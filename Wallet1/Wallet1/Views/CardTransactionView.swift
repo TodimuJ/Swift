@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct TransactionView: View {
+    
+
     var body: some View {
         VStack(spacing: -20) {
             HStack{
@@ -30,44 +32,21 @@ struct TransactionView: View {
             .cornerRadius(15)
             .offset(x:0, y:10)
             
-            LazyVStack {
-                ForEach(0..<6, id: \.self) { item in
-                    TransactionRow()
-                }
-            }
+//            LazyVStack {
+//                ForEach(0..<6, id: \.self) { item in
+//                    TransactionRow()
+//                }
+//            }
+            
+            
+            TransactionRow()
+            
             .background(Color.white)
             .cornerRadius(20)
         }
         .padding(.horizontal)
     }
 }
-
-
-struct TransactionRow: View {
-    var body: some View {
-        HStack {
-            Image("visaIcon")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 30, height: 20)
-                .padding(5)
-                
-            
-            VStack(alignment: .leading) {
-                Text("Dribble")
-                    .font(.headline)
-                Text("1 Jul 2022 13:47")
-                    .font(.caption)
-                    .foregroundColor(Color(.secondaryLabel))
-            }
-            Spacer()
-            Text("-$59.99")
-                .font(.headline)
-        }
-        .padding()
-    }
-}
-
 
 struct CardTransaction_Previews: PreviewProvider {
     static var previews: some View {
