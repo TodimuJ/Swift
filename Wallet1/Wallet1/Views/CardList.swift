@@ -9,6 +9,14 @@ import Foundation
 import SwiftUI
 
 struct CardList: View {
+    
+    let card: [CardType] = [
+        CardType(image:"visa", number:"appleMusic", balance:"$137,448.23", currency:"USD"),
+        CardType(image:"visa", number:"appleMusic", balance:"$137,448.23", currency:"USD"),
+        CardType(image:"visa", number:"appleMusic", balance:"$137,448.23", currency:"USD"),
+        CardType(image:"visa", number:"appleMusic", balance:"$137,448.23", currency:"USD"),
+    ]
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             LazyHStack {

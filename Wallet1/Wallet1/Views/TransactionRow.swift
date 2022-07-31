@@ -12,17 +12,17 @@ struct TransactionRow: View {
     
     let transaction: [Transactions] = [
         Transactions(name:"Apple Music", image:"appleMusic", date:"Aug 1 2022 2:03", amount:"-$7.99"),
-        Transactions(name:"Emirates", image:"emirates", date:"Jul 30 2022 15:48", amount:"-$1,798.65"),
+        Transactions(name:"Emirates", image:"emirates", date:"Jul 30 2022 15:48", amount:"-$5,798.65"),
         Transactions(name:"Starbucks", image:"starbucks", date:"Jul 29 2022 18:39", amount:"-$3.56"),
-        Transactions(name:"Elon/Tesla", image:"tesla", date:"Jul 25 2022 3:01", amount:"$9,999.99"),
+        Transactions(name:"Elon-Tesla", image:"tesla", date:"Jul 25 2022 3:01", amount:"$9,999.99"),
         Transactions(name:"Spotify", image:"spotify", date:"Jul 19 2022 2:03", amount:"-$12.99"),
-        Transactions(name:"Nike", image:"nike", date:"Jul 14 2022 16:22", amount:"-$233.50")
+        Transactions(name:"Nike", image:"nike", date:"Jul 14 2022 16:22", amount:"-$233.50"),
+        Transactions(name:"Asos", image:"asos", date:"Jul 12 2022 13:42", amount:"-$497.89")
     ]
     
     var body: some View {
         LazyVStack{
 //        HStack {
-        
             ForEach(transaction, id: \.id){ item in
                 HStack{
                 Image("\(item.image)")

@@ -12,9 +12,10 @@ import SwiftUI
 struct SelectCard: View{
     
     var body: some View {
+        
         NavigationView{
-            CardList()
             ScrollView(.vertical){
+                CardList()
                 TransactionView()
             }
             .background(Color.gray.opacity(0.15))
