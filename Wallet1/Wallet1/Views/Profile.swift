@@ -18,7 +18,7 @@ struct Profile: View{
                 CardList()
                 TransactionView()
             }
-            .background(Color.gray.opacity(0.15))
+            .background(Color.red.opacity(0.45))
             .navigationTitle(Text("My Wallet"))
         }
     }
