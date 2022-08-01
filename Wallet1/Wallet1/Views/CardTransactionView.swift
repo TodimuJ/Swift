@@ -40,9 +40,8 @@ struct TransactionView: View {
             
             
             TransactionRow()
-            
-            .background(Color.white)
-            .cornerRadius(20)
+                .background(Color.white)
+                .cornerRadius(20)
         }
         .padding(.horizontal)
     }
