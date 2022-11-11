@@ -12,7 +12,11 @@ struct ReserveView: View {
     
     @State var booked : [Int] = [4,5,12,16,18,20,28,31]
     @State var selected : [Int] = []
+    
     @State var seatImage = "available"
+    
+    @State var date: Date = Date()
+    @State var selectedTime = "19:15"
     
     var body: some View{
         ScrollView(.vertical, showsIndicators: false, content: {
@@ -110,7 +114,9 @@ struct ReserveView: View {
                                     return
                                 }
                                 // Add selected seat
-                                selected.append(seat)                            }
+                                selected.append(seat)
+                            }
+                            .disabled(booked.contains(seat))
                     }
                     
                 })
@@ -135,6 +141,7 @@ struct ReserveView: View {
                                 // Add selected seat
                                 selected.append(seat)
                             }
+                            .disabled(booked.contains(seat))
                     }
 
                 })
@@ -148,7 +155,7 @@ struct ReserveView: View {
                         SeatView(index: index, seat: index,  booked: $booked, selected: $selected, seatImage: $seatImage)
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                seatImage = "selectedSeat"
+//                                seatImage = "selectedSeat"
                                 // Check if seat already selected, else add to array and change color
                                 if selected.contains(seat){
                                     
@@ -163,6 +170,7 @@ struct ReserveView: View {
                                 
                                 selected.append(seat)
                             }
+                            .disabled(booked.contains(seat))
                     }
 
                 })
@@ -174,6 +182,7 @@ struct ReserveView: View {
             
             HStack(spacing:40) {
                 Text("Available")
+                    .foregroundColor(Color.white)
                     .overlay(
                         Circle()
                             .frame(width:10)
@@ -181,6 +190,7 @@ struct ReserveView: View {
                             .foregroundColor(Color.white)
                     )
                 Text("Reserved")
+                    .foregroundColor(Color.white)
                     .overlay(
                         Circle()
                             .frame(width:10)
@@ -188,6 +198,7 @@ struct ReserveView: View {
                             .foregroundColor(Color("reservedSeat"))
                     )
                 Text("Selected")
+                    .foregroundColor(Color.white)
                     .overlay(
                         Circle()
                             .frame(width:10)
@@ -197,9 +208,42 @@ struct ReserveView: View {
             }
             .padding(.top, 30)
             
+            HStack{
+                
+                Text("Date:")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                
+                Spacer()
+                
+                DatePicker("", selection: $date, displayedComponents: .date)
+//                DatePicker("", selection: $date)
+                    .labelsHidden()
+            }
+            .padding()
+            .padding(.top)
+            
+            ScrollView(.horizontal, showsIndicators: false, content: {
+                HStack(spacing: 15){
+                    ForEach(time,id: \.self){timing in 
+                        Text(timing)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding(.vertical)
+                            .padding(.horizontal, 20)
+                            .background(Color("reservedSeat").opacity(selectedTime == timing ? 1 : 0.3))
+                            .cornerRadius(10)
+                            .onTapGesture {
+                                selectedTime = timing
+                            }
+                    }
+                }
+            })
+            
         })
-//        .background(Color("reserveBackground"))
-        .background(Color.gray)
+        .background(Color("reserveBackground"))
+//        .background(Color.gray)
     }
 }
 
@@ -223,7 +267,7 @@ struct SeatView: View {
 //                .foregroundColor(selected.contains(seat) ? Color("reservedSeat") : Color.clear)
                 .opacity(index==2 || index==6 || index==9 || index==17 || index==26 || index==41 ? 0 : 1)
         }
-//        .disabled(booked.contains(seat))
+//
     }
 }
 
