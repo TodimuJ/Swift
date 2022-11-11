@@ -12,6 +12,7 @@ struct ReserveView: View {
     
     @State var booked : [Int] = [4,5,12,16,18,20,28,31]
     @State var selected : [Int] = []
+    @State var seatImage = "selected"
     
     var body: some View{
         ScrollView(.vertical, showsIndicators: false, content: {
@@ -46,6 +47,7 @@ struct ReserveView: View {
                     path.addCurve(to: CGPoint(x:width, y:50), control1: CGPoint(x:width/2, y:0), control2: CGPoint(x:width, y:50))
                 }
                 .stroke(Color.white, lineWidth: 3)
+                .shadow(color:.white, radius: 5)
             }
             .frame(height: 50)
             .padding(.top,20)
@@ -98,7 +100,7 @@ struct ReserveView: View {
                         // Print out selected seat
 //                        let seat = index >= 17 ? index - 1 : index
                         let seat = index
-                        SeatView(index: index, seat: index,  booked: $booked, selected: $selected)                            .contentShape(Rectangle())
+                        SeatView(index: index, seat: index,  booked: $booked, selected: $selected, seatImage: $seatImage)      .contentShape(Rectangle())
                             .onTapGesture {
                                 // Check if seat already selected, else add to array and change color
                                 if selected.contains(seat){
@@ -119,7 +121,7 @@ struct ReserveView: View {
                         // Print out selected seat
 //                        let seat = index >= 17 ? index - 1 : index
                         let seat = index
-                        SeatView(index: index, seat: index,  booked: $booked, selected: $selected)
+                        SeatView(index: index, seat: index,  booked: $booked, selected: $selected, seatImage: $seatImage)
                             .contentShape(Rectangle())
                             .onTapGesture {
                                 
@@ -143,17 +145,22 @@ struct ReserveView: View {
                         // Print out selected seat
 //                        let seat = index >= 17 ? index - 1 : index
                         let seat = index
-                        SeatView(index: index, seat: index,  booked: $booked, selected: $selected)
+                        SeatView(index: index, seat: index,  booked: $booked, selected: $selected, seatImage: $seatImage)
                             .contentShape(Rectangle())
                             .onTapGesture {
+                                seatImage = "available"
                                 // Check if seat already selected, else add to array and change color
                                 if selected.contains(seat){
+                                    
                                     selected.removeAll{(removeSeat) -> Bool in
+                                        
                                         return removeSeat == seat
                                     }
+                                    
                                     return
                                 }
                                 // Add selected seat
+                                
                                 selected.append(seat)
                             }
                     }
@@ -164,8 +171,35 @@ struct ReserveView: View {
             .padding()
             .padding(.top,40)
             
+            
+            HStack(spacing:40) {
+                Text("Available")
+                    .overlay(
+                        Circle()
+                            .frame(width:10)
+                            .offset(x:-50, y:0)
+                            .foregroundColor(Color.white)
+                    )
+                Text("Reserved")
+                    .overlay(
+                        Circle()
+                            .frame(width:10)
+                            .offset(x:-50, y:0)
+                            .foregroundColor(Color("reservedSeat"))
+                    )
+                Text("Selected")
+                    .overlay(
+                        Circle()
+                            .frame(width:10)
+                            .offset(x:-50, y:0)
+                            .foregroundColor(Color("selectedSeat"))
+                    )
+            }
+            .padding(.top, 30)
+            
         })
-        .background(Color("reserveBackground"))
+//        .background(Color("reserveBackground"))
+        .background(Color.gray)
     }
 }
 
@@ -176,19 +210,20 @@ struct SeatView: View {
     
     @Binding var booked: [Int]
     @Binding var selected: [Int]
+    @Binding var seatImage: String
     
     
     var body:some View {
         ZStack{
 //            RoundedRectangle(cornerRadius: 4)
-            Image("selected")
+            Image(seatImage)
                 .resizable()
                 .frame(width:50, height:50)
                 .foregroundColor(booked.contains(index) ? Color("reservedSeat") : Color.white)
-//                .foregroundColor(selected.contains(seat) ? Color.red : Color.clear)
+//                .foregroundColor(selected.contains(seat) ? Color("reservedSeat") : Color.clear)
                 .opacity(index==2 || index==6 || index==9 || index==17 || index==26 || index==41 ? 0 : 1)
         }
-        .disabled(booked.contains(seat))
+//        .disabled(booked.contains(seat))
     }
 }
 
