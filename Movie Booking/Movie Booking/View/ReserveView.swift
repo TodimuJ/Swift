@@ -49,6 +49,10 @@ struct ReserveView: View {
             
             
             // Create theatre seats
+            
+            let totalSeats = 60 + 4
+            
+            
         })
         .background(Color("reserveBackground"))
     }
