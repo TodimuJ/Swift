@@ -12,7 +12,7 @@ struct ReserveView: View {
     
     @State var booked : [Int] = [4,5,12,16,18,20,28,31]
     @State var selected : [Int] = []
-    @State var seatImage = "selected"
+    @State var seatImage = "available"
     
     var body: some View{
         ScrollView(.vertical, showsIndicators: false, content: {
@@ -148,7 +148,7 @@ struct ReserveView: View {
                         SeatView(index: index, seat: index,  booked: $booked, selected: $selected, seatImage: $seatImage)
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                seatImage = "available"
+                                seatImage = "selectedSeat"
                                 // Check if seat already selected, else add to array and change color
                                 if selected.contains(seat){
                                     
@@ -216,10 +216,10 @@ struct SeatView: View {
     var body:some View {
         ZStack{
 //            RoundedRectangle(cornerRadius: 4)
-            Image(seatImage)
+            Image(booked.contains(index) ? "reserved" : seatImage)
                 .resizable()
                 .frame(width:50, height:50)
-                .foregroundColor(booked.contains(index) ? Color("reservedSeat") : Color.white)
+                .foregroundColor(selected.contains(index) ? Color("selectedSeat") : Color.white)
 //                .foregroundColor(selected.contains(seat) ? Color("reservedSeat") : Color.clear)
                 .opacity(index==2 || index==6 || index==9 || index==17 || index==26 || index==41 ? 0 : 1)
         }
