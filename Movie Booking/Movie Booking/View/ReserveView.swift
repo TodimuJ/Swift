@@ -9,13 +9,17 @@ import Foundation
 import SwiftUI
 
 struct ReserveView: View {
+    
+    @State var booked : [Int] = [4,5,12,16,18,20,28,31]
+    @State var selected : [Int] = []
+    
     var body: some View{
         ScrollView(.vertical, showsIndicators: false, content: {
             
             HStack {
                 
                 Button(action: {}, label: {
-                    Image(systemName: "chevron.left")
+                    Image(systemName: "arrow.left")
                         .font(.title2)
                         .foregroundColor(.white)
                 })
@@ -90,7 +94,21 @@ struct ReserveView: View {
                 LazyHGrid(rows: columns, spacing: 10, content: {
                     
                     ForEach(top,id: \.self){index in
-                        SeatView(index: index)
+                        
+                        // Print out selected seat
+//                        let seat = index >= 17 ? index - 1 : index
+                        let seat = index
+                        SeatView(index: index, seat: index,  booked: $booked, selected: $selected)                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                // Check if seat already selected, else add to array and change color
+                                if selected.contains(seat){
+                                    selected.removeAll{(removeSeat) -> Bool in
+                                        return removeSeat == seat
+                                    }
+                                    return
+                                }
+                                // Add selected seat
+                                selected.append(seat)                            }
                     }
                     
                 })
@@ -98,7 +116,23 @@ struct ReserveView: View {
                 LazyHGrid(rows: column1, spacing: 5, content: {
 
                     ForEach(middle,id: \.self){index in
-                        SeatView(index: index)
+                        // Print out selected seat
+//                        let seat = index >= 17 ? index - 1 : index
+                        let seat = index
+                        SeatView(index: index, seat: index,  booked: $booked, selected: $selected)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                
+                                // Check if seat already selected, else add to array and change color
+                                if selected.contains(seat){
+                                    selected.removeAll{(removeSeat) -> Bool in
+                                        return removeSeat == seat
+                                    }
+                                    return
+                                }
+                                // Add selected seat
+                                selected.append(seat)
+                            }
                     }
 
                 })
@@ -106,7 +140,22 @@ struct ReserveView: View {
                 LazyHGrid(rows: columns, spacing: 10, content: {
 
                     ForEach(bottom,id: \.self){index in
-                        SeatView(index: index)
+                        // Print out selected seat
+//                        let seat = index >= 17 ? index - 1 : index
+                        let seat = index
+                        SeatView(index: index, seat: index,  booked: $booked, selected: $selected)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                // Check if seat already selected, else add to array and change color
+                                if selected.contains(seat){
+                                    selected.removeAll{(removeSeat) -> Bool in
+                                        return removeSeat == seat
+                                    }
+                                    return
+                                }
+                                // Add selected seat
+                                selected.append(seat)
+                            }
                     }
 
                 })
@@ -123,15 +172,23 @@ struct ReserveView: View {
 
 struct SeatView: View {
     var index: Int
+    var seat: Int
+    
+    @Binding var booked: [Int]
+    @Binding var selected: [Int]
+    
+    
     var body:some View {
         ZStack{
 //            RoundedRectangle(cornerRadius: 4)
             Image("selected")
                 .resizable()
                 .frame(width:50, height:50)
-                .foregroundColor(Color.white)
+                .foregroundColor(booked.contains(index) ? Color("reservedSeat") : Color.white)
+//                .foregroundColor(selected.contains(seat) ? Color.red : Color.clear)
                 .opacity(index==2 || index==6 || index==9 || index==17 || index==26 || index==41 ? 0 : 1)
         }
+        .disabled(booked.contains(seat))
     }
 }
 
