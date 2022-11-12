@@ -16,7 +16,7 @@ struct ReserveView: View {
     @State var seatImage = "available"
     
     @State var date: Date = Date()
-    @State var selectedTime = "19:15"
+    @State var selectedTime = "9:45"
     
     var body: some View{
         ScrollView(.vertical, showsIndicators: false, content: {
@@ -54,7 +54,7 @@ struct ReserveView: View {
                 .shadow(color:.white, radius: 5)
             }
             .frame(height: 50)
-            .padding(.top,20)
+            .padding(.top,10)
             .padding(.horizontal,30)
             
             
@@ -177,7 +177,7 @@ struct ReserveView: View {
             
             }
             .padding()
-            .padding(.top,40)
+            .padding(.top,30)
             
             
             HStack(spacing:40) {
@@ -206,7 +206,7 @@ struct ReserveView: View {
                             .foregroundColor(Color("selectedSeat"))
                     )
             }
-            .padding(.top, 30)
+            .padding(.top, 15)
             
             HStack{
                 
@@ -222,7 +222,7 @@ struct ReserveView: View {
                     .labelsHidden()
             }
             .padding()
-            .padding(.top)
+            .padding(.top,5)
             
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack(spacing: 15){
@@ -239,7 +239,40 @@ struct ReserveView: View {
                             }
                     }
                 }
+                .padding(.horizontal)
             })
+            
+            HStack(spacing:15){
+                VStack(alignment: .leading, spacing: 10, content: {
+                    Text("\(selected.count) Seat(s)")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                    
+                    Text("$\(selected.count * 25)")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.yellow)
+                })
+                .frame(width: 100)
+                .offset(x:10)
+                
+                Spacer()
+                
+                Button(action: {}, label: {
+                    Text("Buy Tickets")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(.vertical)
+                        .frame(maxWidth: 200)
+                        .background(Color("reservedSeat"))
+                        .cornerRadius(15)
+                        .offset(x:-10)
+                        
+                })
+            }
+            .padding()
+            .padding(.top,10)
             
         })
         .background(Color("reserveBackground"))
