@@ -12,4 +12,4 @@ import SwiftUI
 
 var about = ""
 var genre = ["action", "adventure", "sci-fi"]
-var time = ["9:45", "12:15", "15:30", "19:15", "21:50"]
+var time = ["9:45", "12:15", "14:30", "15:25", "16:55", "19:15", "21:50"]
