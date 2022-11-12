@@ -13,11 +13,44 @@ struct HomeView: View {
     var body: some View {
         VStack{
             Text("Choose Movie")
+                .font(.system(size: 25))
+                .fontWeight(.bold)
 //            Spacer()
             SearchBarView()
 //            Spacer()
             ComingSoonView()
+                .padding(.top)
+            
+            NowPlayingView()
             Spacer()
+        }
+    }
+}
+
+struct NowPlayingView: View {
+    
+    @State var nowPlaying: [String] = ["black_adam", "wakanda", "the_menu", "sonic", "mom", "morbius"]
+    
+    var body: some View {
+        VStack{
+            Text("Now Playing")
+                .font(.headline)
+                .foregroundColor(.black)
+                .padding(.horizontal, 20)
+            
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack(spacing: 10){
+                    ForEach(nowPlaying.indices, id: \.self){ index in
+                        Image(nowPlaying[index])
+                            .resizable()
+//                            .scaledToFit()
+                            .frame(width:100, height: 130)
+                            .cornerRadius(15)
+                    }
+                }
+                .padding(.horizontal)
+            }
+            
             
         }
     }
@@ -52,7 +85,7 @@ struct SearchBarView: View {
         .padding(.horizontal)
         .frame(width: 360, height: 40)
         .background(Color.gray.opacity(0.25))
-        .cornerRadius(10)
+        .cornerRadius(15)
     }
 }
 
@@ -68,7 +101,6 @@ struct ComingSoonView: View {
                     .foregroundColor(.white)
                     .fontWeight(.semibold)
                     .offset(x:-130, y:80)
-                
             )
     }
 }
