@@ -15,8 +15,11 @@ struct ReserveView: View {
     
     @State var seatImage = "available"
     
+    @State var seatString: String = "Seats"
+    
     @State var date: Date = Date()
     @State var selectedTime = "9:45"
+    
     
     var body: some View{
         ScrollView(.vertical, showsIndicators: false, content: {
@@ -242,7 +245,9 @@ struct ReserveView: View {
                 .padding(.horizontal)
             })
             
+            
             HStack(spacing:15){
+                
                 VStack(alignment: .leading, spacing: 10, content: {
                     Text("\(selected.count) Seat(s)")
                         .font(.caption)
@@ -278,6 +283,16 @@ struct ReserveView: View {
         .background(Color("reserveBackground"))
 //        .background(Color.gray)
     }
+    
+//    func checkSeats() -> String {
+//        if selected.count == 1 {
+//            seatString = "Seat"
+//        }
+//
+//        return seatString
+//    }
+//
+
 }
 
 
