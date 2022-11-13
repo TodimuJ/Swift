@@ -16,13 +16,15 @@ struct HomeView: View {
     var body: some View {
         VStack{
             Text("Choose Movie")
-                .font(.system(size: 25))
+                .foregroundColor(.white)
+                .font(.system(size: 23))
                 .fontWeight(.bold)
 //            Spacer()
             SearchBarView()
 //            Spacer()
             ComingSoonView()
-                .padding(.vertical)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
             
             NowPlayingView()
             
@@ -31,7 +33,7 @@ struct HomeView: View {
             
 //            Spacer()
         }
-        .background(Color.red.opacity(0.4))
+        .background(Color.black.opacity(0.7))
 //        .background(LinearGradient(gradient: Gradient(colors: [.blue , .gray, .blue]),
 //                               startPoint: .topLeading,
 //                               endPoint: .bottomTrailing))
@@ -53,7 +55,7 @@ struct TopMoviesView: View {
             HStack{
                 Text("Top Movies")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .padding(.horizontal, 20)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -96,7 +98,7 @@ struct TopMoviesView: View {
                     .padding(.horizontal)
                 }
             }
-            .padding(.bottom, 10)
+            .padding(.bottom, 5)
             
         }
     }
@@ -111,7 +113,7 @@ struct NowPlayingView: View {
             HStack{
                 Text("Now Playing")
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .padding(.horizontal, 20)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
