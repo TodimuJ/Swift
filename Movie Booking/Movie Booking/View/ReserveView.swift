@@ -20,6 +20,8 @@ struct ReserveView: View {
     @State var date: Date = Date()
     @State var selectedTime = "9:45"
     
+
+    
     
     var body: some View{
         ScrollView(.vertical, showsIndicators: false, content: {
@@ -235,7 +237,8 @@ struct ReserveView: View {
                             .foregroundColor(.white)
                             .padding(.vertical)
                             .padding(.horizontal, 20)
-                            .background(Color("reservedSeat").opacity(selectedTime == timing ? 1 : 0.3))
+//                            .background(.blue.opacity(selectedTime == timing ? 1 : 0.3))
+                            .background(selectedTime == timing ? .blue : Color("reservedSeat").opacity(0.5))
                             .cornerRadius(10)
                             .onTapGesture {
                                 selectedTime = timing
@@ -264,24 +267,41 @@ struct ReserveView: View {
                 
                 Spacer()
                 
-                Button(action: {}, label: {
-                    Text("Buy Tickets")
+//                Button(action: {
+//                        bookTicketScreen()
+//                },
+//            label: {
+                NavigationLink(destination: TicketView(), label: {
+                    Text("Book Tickets")
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .padding(.vertical)
                         .frame(maxWidth: 200)
-                        .background(Color("reservedSeat"))
+                        .background(.blue)
                         .cornerRadius(15)
                         .offset(x:-10)
                         
                 })
+
             }
             .padding()
             .padding(.top,10)
             
+//            bookTicketScreen()
+            
+//            if isLoading == false {
+//                TicketView()
+//            }
+        
+            
         })
-        .background(Color("reserveBackground"))
-//        .background(Color.gray)
+//        .background(Color("reserveBackground"))
+        .background(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.8),.black,  Color.black.opacity(0.8)]),
+                               startPoint: .topTrailing,
+                               endPoint: .bottomLeading))
+//        .onAppear{bookTicketScreen()}
+        
+        
     }
     
 //    func checkSeats() -> String {
@@ -292,9 +312,91 @@ struct ReserveView: View {
 //        return seatString
 //    }
 //
+    
+
 
 }
 
+
+
+struct TestingView: View {
+    
+    @State var isLoading = false
+    
+    var body:some View {
+        
+        ZStack{
+            VStack(spacing: 0){
+                VStack(spacing:4){
+                    Text("Black Panther")
+                        .fontWeight(.bold)
+                    Text("Wakanda Forever")
+                }
+                .padding(EdgeInsets(top:20, leading:30, bottom:0, trailing: 30))
+                .frame(width:250, height: 325, alignment: .top)
+                .foregroundColor(.white)
+                .background(
+                    Image("wakanda")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .cornerRadius(18)
+                )
+                .shadow(radius: 5)
+                .overlay(
+                    Circle()
+                        .foregroundColor(.white.opacity(1))
+                        .frame(width:50, height: 50)
+                        .offset(x:-120, y:180)
+                )
+                .overlay(
+                    Circle()
+                        .foregroundColor(.white.opacity(1))
+                        .frame(width:50, height: 50)
+                        .offset(x:120, y:180)
+                )
+            }
+            .frame(height: 460)
+            .font(.footnote)
+            
+            if isLoading {
+                ZStack {
+                            Color(.systemBackground)
+                                .ignoresSafeArea()
+                                .opacity(1)
+                    
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                        .scaleEffect(3)
+                }
+            }
+        }
+        .onAppear{booker()}
+
+    }
+    
+    func booker(){
+        isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+            isLoading = false
+        }
+    }
+}
+
+struct LoadingView: View {
+    var body:some View {
+        ZStack {
+                    Color(.systemBackground)
+                        .ignoresSafeArea()
+                        .opacity(1)
+            
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                .scaleEffect(3)
+            
+//            TicketView()
+        }
+    }
+}
 
 struct SeatView: View {
     var index: Int
