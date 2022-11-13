@@ -14,43 +14,60 @@ struct TicketView: View {
     var body:some View {
         
         ZStack{
-            VStack(spacing: 0){
-                VStack(spacing:4){
-                    Text("Black Panther")
-                        .fontWeight(.bold)
-                    Text("Wakanda Forever")
+            VStack{
+                ZStack{
+                    VStack(spacing: 0){
+                        VStack(spacing:4){
+                            Text("Black Panther")
+                                .fontWeight(.bold)
+                            Text("Wakanda Forever")
+                        }
+                        .padding(EdgeInsets(top:20, leading:30, bottom:0, trailing: 30))
+                        .frame(width:250, height: 325, alignment: .top)
+                        .foregroundColor(.white)
+                        .background(
+                            Image("wakanda")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .cornerRadius(18)
+                        )
+                        .shadow(radius: 5)
+                        .overlay(
+                            Circle()
+                                .foregroundColor(.white.opacity(1))
+                                .frame(width:50, height: 50)
+                                .offset(x:-120, y:180)
+                        )
+                        .overlay(
+                            Circle()
+                                .foregroundColor(.white.opacity(1))
+                                .frame(width:50, height: 50)
+                                .offset(x:120, y:180)
+                        )
+                    }
+                    .frame(height: 460)
+                    .font(.footnote)
+                    //            .shadow(radius: 2)
+                    
+                    
                 }
-                .padding(EdgeInsets(top:20, leading:30, bottom:0, trailing: 30))
-                .frame(width:250, height: 325, alignment: .top)
-                .foregroundColor(.white)
-                .background(
-                    Image("wakanda")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .cornerRadius(18)
-                )
-                .shadow(radius: 5)
-                .overlay(
-                    Circle()
-                        .foregroundColor(.white.opacity(1))
-                        .frame(width:50, height: 50)
-                        .offset(x:-120, y:180)
-                )
-                .overlay(
-                    Circle()
-                        .foregroundColor(.white.opacity(1))
-                        .frame(width:50, height: 50)
-                        .offset(x:120, y:180)
-                )
+                
+                Image("barcode")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                
+                
+                
             }
-            .frame(height: 460)
-            .font(.footnote)
+            
+            
+            
             
             if isLoading {
                 ZStack {
-                            Color(.systemBackground)
-                                .ignoresSafeArea()
-                                .opacity(1)
+                    Color(.systemBackground)
+                        .ignoresSafeArea()
+                        .opacity(1)
                     
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .blue))
@@ -58,8 +75,7 @@ struct TicketView: View {
                 }
             }
         }
-//        .onAppear{bookTicketScreen()}
-
+        .onAppear{bookTicketScreen()}
     }
     
     func bookTicketScreen(){
