@@ -65,7 +65,7 @@ struct DetailView: View {
                     
                     Text("Director: Ryan Coogler")
                         .foregroundColor(.white)
-                        .font(.title2)
+                        .font(.title3)
                         .fontWeight(.semibold)
                     
 //                    Text("IMDb 8.5/10 Rotten Tomatoes: 93%")
@@ -93,10 +93,24 @@ struct DetailView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-                        .padding(.vertical, 10)
+                        .padding(.top, 10)
                     
                     Text(about)
                         .foregroundColor(.white)
+                    
+                    VStack{
+                        Image("wakanda_trailer")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(.trailing,10)
+                            .overlay(
+                                Image(systemName: "play.circle")
+                                    .resizable()
+                                    .foregroundColor(.white)
+                                    .frame(width:50, height:50)
+                            )
+                    }
+                    .padding(.vertical)
                     
                     NavigationLink(destination: ReserveView(), label: {
                        Text("Book Now")
@@ -107,12 +121,7 @@ struct DetailView: View {
                             .background(Color.blue)
                             .cornerRadius(10)
                             .padding(.horizontal)
-                            
-                            
                     })
-                    
-                    
-                    
                 })
                 .padding(.top, 30)
                 .padding(.horizontal)
