@@ -224,6 +224,8 @@ struct ReserveView: View {
                 
                 DatePicker("", selection: $date, displayedComponents: .date)
 //                DatePicker("", selection: $date)
+                    .colorInvert()
+                    .colorMultiply(Color.blue)
                     .labelsHidden()
             }
             .padding()
@@ -393,7 +395,6 @@ struct LoadingView: View {
                 .progressViewStyle(CircularProgressViewStyle(tint: .blue))
                 .scaleEffect(3)
             
-//            TicketView()
         }
     }
 }
@@ -409,15 +410,12 @@ struct SeatView: View {
     
     var body:some View {
         ZStack{
-//            RoundedRectangle(cornerRadius: 4)
             Image(booked.contains(index) ? "reserved" : seatImage)
                 .resizable()
                 .frame(width:50, height:50)
                 .foregroundColor(selected.contains(index) ? Color("selectedSeat") : Color.white)
-//                .foregroundColor(selected.contains(seat) ? Color("reservedSeat") : Color.clear)
                 .opacity(index==2 || index==6 || index==9 || index==17 || index==26 || index==41 ? 0 : 1)
         }
-//
     }
 }
 
