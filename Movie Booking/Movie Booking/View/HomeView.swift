@@ -33,10 +33,10 @@ struct HomeView: View {
             
 //            Spacer()
         }
-        .background(Color.black.opacity(0.7))
-//        .background(LinearGradient(gradient: Gradient(colors: [.blue , .gray, .blue]),
-//                               startPoint: .topLeading,
-//                               endPoint: .bottomTrailing))
+//        .background(Color.black.opacity(0.7))
+        .background(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.9) , .red, Color.black.opacity(0.9)]),
+                               startPoint: .topTrailing,
+                               endPoint: .bottomLeading))
     }
 }
 
@@ -47,7 +47,6 @@ struct TopMoviesView: View {
     @State var topMovies2: [String] = ["creed2", "matrix", "vendetta", "kingsman", "sherlock"]
     
     @State var topMovies3: [String] = ["chucky", "inception", "interstellar", "avatar", "titanic", "lotr"]
-    
     
     var body: some View {
         
@@ -122,16 +121,13 @@ struct NowPlayingView: View {
                 HStack(spacing: 10){
                     ForEach(nowPlaying.indices, id: \.self){ index in
                         
-//                        NavigationView{
+                        NavigationLink(destination: DetailView(), label: {
                             Image(nowPlaying[index])
                                 .resizable()
                                 .frame(width:100, height: 130)
                                 .cornerRadius(15)
-//                            NavigationLink(destination: ReserveView(), label: {Text("Click").foregroundColor(.white)})
+                        })
                         }
-//                        .foregroundColor(Color.clear)
-//                        .frame(width:100, height: 130)
-//                    }
                 }
                 .padding(.horizontal)
             }
