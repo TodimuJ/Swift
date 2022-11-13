@@ -39,6 +39,7 @@ struct ContentView: View {
             TabView{
                 //            NavigationView{
                 HomeView()
+                    .edgesIgnoringSafeArea(.top)
                     .tabItem{
                         Label("Home", systemImage:"house.fill")
                     }
