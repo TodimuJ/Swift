@@ -53,10 +53,10 @@ struct TicketView: View {
                     Image("location")
                         .resizable()
                         .foregroundColor(.red.opacity(0.8))
-                        .frame(width:20, height: 20)
+                        .frame(width:15, height: 15)
                     
                     Text("Cineplex Cinemas Yonge-Dundas")
-//                        .font(.subheadline)
+
                 }
                 
                 Image("barcode")
@@ -68,26 +68,30 @@ struct TicketView: View {
                 HStack(spacing: 50){
                     VStack{
                         Text("Nov 19")
+                            .foregroundColor(.primary)
                         Text("Date")
                     }
                     
                     VStack{
                         Text("19:15")
+                            .foregroundColor(.primary)
                         Text("Time")
                     }
                     
                     VStack{
                         Text("G3")
+                            .foregroundColor(.primary)
                         Text("Seat")
                     }
                     
                     VStack{
                         Text("$25")
+                            .foregroundColor(.primary)
                         Text("Price")
                     }
                 }
                 .font(.subheadline)
-                .foregroundColor(.primary)
+                .foregroundColor(Color.black.opacity(0.75))
                 
                 Text("Cancel Ticket")
                      .font(.title3)
@@ -100,9 +104,19 @@ struct TicketView: View {
                              .stroke(.black, lineWidth: 2)
                      )
                      .padding(.horizontal)
-                     .padding(.top, 70)
+                     .padding(.top, 10)
                 
-                Spacer()
+                Text("Book Tickets")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.vertical)
+                    .frame(width: 300, height: 43, alignment: .center)
+                    .background(.blue)
+                    .cornerRadius(10)
+//                    .offset(x:-10)
+                
+//                Spacer()
             }
             
             
@@ -125,7 +139,7 @@ struct TicketView: View {
     
     func bookTicketScreen(){
         isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
             isLoading = false
         }
     }
