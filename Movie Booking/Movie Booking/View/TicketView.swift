@@ -47,17 +47,62 @@ struct TicketView: View {
                     }
                     .frame(height: 460)
                     .font(.footnote)
-                    //            .shadow(radius: 2)
+                }
+                
+                HStack{
+                    Image("location")
+                        .resizable()
+                        .foregroundColor(.red.opacity(0.8))
+                        .frame(width:20, height: 20)
                     
-                    
+                    Text("Cineplex Cinemas Yonge-Dundas")
+//                        .font(.subheadline)
                 }
                 
                 Image("barcode")
                     .resizable()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 75, height: 75)
+                    .padding(.bottom)
                 
                 
+                HStack(spacing: 50){
+                    VStack{
+                        Text("Nov 19")
+                        Text("Date")
+                    }
+                    
+                    VStack{
+                        Text("19:15")
+                        Text("Time")
+                    }
+                    
+                    VStack{
+                        Text("G3")
+                        Text("Seat")
+                    }
+                    
+                    VStack{
+                        Text("$25")
+                        Text("Price")
+                    }
+                }
+                .font(.subheadline)
+                .foregroundColor(.primary)
                 
+                Text("Cancel Ticket")
+                     .font(.title3)
+                     .fontWeight(.semibold)
+                     .foregroundColor(Color.black)
+                     .frame(width: 300, height: 40, alignment: .center)
+                     .background(Color.white)
+                     .overlay(
+                         RoundedRectangle(cornerRadius: 10)
+                             .stroke(.black, lineWidth: 2)
+                     )
+                     .padding(.horizontal)
+                     .padding(.top, 70)
+                
+                Spacer()
             }
             
             
