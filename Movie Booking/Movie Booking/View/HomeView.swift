@@ -10,6 +10,9 @@ import SwiftUI
 
 
 struct HomeView: View {
+    
+//    self.view.backgroundColor = UIColor(patternImage: UIImage(named: "homeBackground.png")!)
+    
     var body: some View {
         VStack{
             Text("Choose Movie")
@@ -22,8 +25,26 @@ struct HomeView: View {
                 .padding(.top)
             
             NowPlayingView()
+            
+            TopMoviesView()
+            
             Spacer()
         }
+        .background(Color.gray.opacity(0.4))
+//        .background(LinearGradient(gradient: Gradient(colors: [.blue , .gray, .blue]),
+//                               startPoint: .topLeading,
+//                               endPoint: .bottomTrailing))
+    }
+}
+
+struct TopMoviesView: View {
+    
+    @State var topMovies: [String] = ["equalizer", "aquaman", "infinity_war", "harry_potter", "end_game", "creed2", "vendetta", "sherlock", "inception", "interstellar", "avatar", "titanic", "lotr"]
+    
+    var body: some View {
+        
+        
+        
     }
 }
 
@@ -101,6 +122,17 @@ struct ComingSoonView: View {
                     .foregroundColor(.white)
                     .fontWeight(.semibold)
                     .offset(x:-130, y:80)
+            )
+            .overlay(
+                Text("COMING SOON")
+                    .foregroundColor(.black)
+                    .fontWeight(.semibold)
+                    .font(.headline)
+                    .frame(width:150, height:30)
+                    .background(Color.white.opacity(0.9))
+                    .cornerRadius(8)
+                    .offset(x:90, y:-80)
+
             )
     }
 }
