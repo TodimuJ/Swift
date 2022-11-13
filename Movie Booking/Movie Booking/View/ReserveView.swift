@@ -24,25 +24,25 @@ struct ReserveView: View {
     var body: some View{
         ScrollView(.vertical, showsIndicators: false, content: {
             
-            HStack {
-                
-                Button(action: {}, label: {
-                    Image(systemName: "arrow.left")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                })
-                
-                Spacer()
-                
-            }
-            .overlay(
+//            HStack {
+//                
+//                Button(action: {}, label: {
+//                    Image(systemName: "arrow.left")
+//                        .font(.title2)
+//                        .foregroundColor(.white)
+//                })
+//                
+//                Spacer()
+//                
+//            }
+//            .overlay(
             
             Text("Choose Seats")
                 .font(.title2)
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
-            )
-            .padding()
+//            )
+//            .padding()
             
             // Get width of screen
             GeometryReader{reader in
@@ -57,7 +57,7 @@ struct ReserveView: View {
                 .shadow(color:.white, radius: 5)
             }
             .frame(height: 50)
-            .padding(.top,10)
+            .padding(.top,5)
             .padding(.horizontal,30)
             
             
