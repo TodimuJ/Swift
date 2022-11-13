@@ -11,33 +11,38 @@ import SwiftUI
 
 struct HomeView: View {
     
-//    self.view.backgroundColor = UIColor(patternImage: UIImage(named: "homeBackground.png")!)
-    
     var body: some View {
-        VStack{
-            Text("Choose Movie")
-                .foregroundColor(.white)
-                .font(.system(size: 23))
-                .fontWeight(.bold)
-//            Spacer()
-            SearchBarView()
-//            Spacer()
-            ComingSoonView()
-                .padding(.top, 10)
-                .padding(.bottom, 10)
-            
-            NowPlayingView()
-            
+        
+        
+        ScrollView(showsIndicators: false){
+            VStack{
+                VStack{
+                    Text("Movies")
+                        .foregroundColor(.white)
+                        .font(.system(size: 23))
+                        .fontWeight(.bold)
+                }
+                .padding(.top,50)
+                .padding(.vertical)
+                    
+                SearchBarView()
+                
+                ComingSoonView()
+                    .padding(.top, 10)
+                    .padding(.bottom, 10)
+                
+                NowPlayingView()
+                
+                TopMoviesView()
+            }
 
-            TopMoviesView()
+            .background(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.9) , .red, Color.black.opacity(0.9)]),
+                                       startPoint: .topTrailing,
+                                       endPoint: .bottomLeading))
             
-//            Spacer()
         }
-//        .background(Color.black.opacity(0.7))
-        .background(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.9) , .red, Color.black.opacity(0.9)]),
-                               startPoint: .topTrailing,
-                               endPoint: .bottomLeading))
     }
+    
 }
 
 struct TopMoviesView: View {
@@ -100,6 +105,7 @@ struct TopMoviesView: View {
             .padding(.bottom, 5)
             
         }
+        
     }
 }
 
